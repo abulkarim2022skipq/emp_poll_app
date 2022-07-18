@@ -11,3 +11,151 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header,
+.center {
+  text-align: center;
+}
+
+
+
+.questions-container {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+  padding-right: 20px;  
+  flex-wrap: wrap;
+  margin-top: 0;
+  border: 1px solid rgba(238, 218, 34, 0.5);
+}
+
+.questions-container-div {
+  padding-left: 10%;
+  padding-right: 10%;  
+}
+
+.question-card{
+  /* border: 2px solid red; */
+  width: 12em;
+  height: 20vh;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  /* border: 1px solid rgba(51, 49, 49, 0.5); */
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;}
+
+.question-type-heading{
+  /* border-top: 1px solid rgba(51, 49, 49, 0.5); */
+  /* border-bottom: 1px solid rgba(51, 49, 49, 0.5);*/
+  border: 1px solid rgba(238, 218, 34, 0.5);
+   
+  margin-top: 10px;
+}
+
+.header {
+  background-color: rgb(238, 218, 34);
+  height: 50px;
+  width: 100%;
+  margin-top: 0;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.question-author {
+  font-weight: bolder;
+}
+
+.question-timestamp {
+  color: gray;
+  font-size: small;
+}
+
+.question-show-button-div {
+  margin-top: 3em;
+}
+
+.question-option {
+  border: 1px solid black;
+  border-radius: 9px;
+  padding: 35px;
+  overflow: clip;
+  min-width: 30%;
+}
+.question-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.question-text {
+  margin-bottom: 70px;
+}
+
+.poll-by {
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* https://getcssscan.com/css-buttons-examples
+  button css
+*/
+.question-show-button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.question-show-button:hover,
+.question-show-button:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.question-show-button:hover {
+  transform: translateY(-1px);
+}
+
+.question-show-button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}

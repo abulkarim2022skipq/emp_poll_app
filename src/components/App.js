@@ -6,13 +6,15 @@ import Header from "./Header";
 import { Route, Routes } from "react-router-dom";
 import QuestionPage from "./QuestionPage";
 import { LoadingBar } from "react-redux-loading-bar";
+import Leaderboard from "./Leaderboard";
+import NewQuestion from "./NewQuestion";
 
 function App(props) {
-  console.log("props", props);
+  const { dispatch, loading } = props;
 
   useEffect(() => {
-    console.log("calling useEffect", props);
-    props.dispatch(handleInitialData());
+    // console.log("calling useEffect", props);.
+    dispatch(handleInitialData());
   }, []);
 
   return (
@@ -20,10 +22,12 @@ function App(props) {
       <LoadingBar />
       <div className="container">
         <Header />
-        {props.loading === true ? null : (
+        {loading === true ? null : (
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/question/:id" element={<QuestionPage />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/new" element={<NewQuestion />} />
           </Routes>
         )}
       </div>

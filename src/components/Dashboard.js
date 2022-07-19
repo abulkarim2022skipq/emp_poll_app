@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
+import { setPageLocation } from "../actions/nav";
 import QuestionContainer from "./QuestionContainer";
 
-const Dashboard = ({ newQuestions, doneQuestions }) => {
+const Dashboard = (props) => {
+  const { newQuestions, doneQuestions, dispatch } = props;
+
+  useEffect(() => {
+    dispatch(setPageLocation("home"));
+  }, []);
+
   return (
     <div>
       <QuestionContainer title="New Questions" questions={newQuestions} />

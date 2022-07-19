@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -17,45 +17,39 @@ code {
   text-align: center;
 }
 
-
-
 .questions-container {
   display: flex;
   justify-content: flex-start;
-  padding-left: 20px;
-  padding-right: 20px;  
+  padding: 20px;
   flex-wrap: wrap;
   margin-top: 0;
-  border: 1px solid rgba(238, 218, 34, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .questions-container-div {
   padding-left: 10%;
-  padding-right: 10%;  
+  padding-right: 10%;
 }
 
-.question-card{
-  /* border: 2px solid red; */
+.question-card {
   width: 12em;
   height: 20vh;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-  /* border: 1px solid rgba(51, 49, 49, 0.5); */
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;}
+  box-shadow: rgba(255, 0, 0, 0.16) 2px 4px 15px 5px,
+    rgba(255, 14, 14, 0.3) 0px 0px 1px 0px;
+}
 
-.question-type-heading{
-  /* border-top: 1px solid rgba(51, 49, 49, 0.5); */
-  /* border-bottom: 1px solid rgba(51, 49, 49, 0.5);*/
-  border: 1px solid rgba(238, 218, 34, 0.5);
-   
+.question-type-heading {
+  border: 1px solid rgba(0, 0, 0, 0.5);
   margin-top: 10px;
 }
 
 .header {
-  background-color: rgb(238, 218, 34);
+  background-color: rgb(0, 0, 0);
   height: 50px;
   width: 100%;
   margin-top: 0;
@@ -77,11 +71,12 @@ code {
 }
 
 .question-option {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 9px;
   padding: 35px;
   overflow: clip;
   min-width: 30%;
+  box-shadow: rgba(0, 0, 0, 0.6) 0 1px 3px 0;
 }
 .question-options {
   display: flex;
@@ -90,6 +85,13 @@ code {
 
 .question-text {
   margin-bottom: 70px;
+  font-weight: 500;
+}
+
+.selected-answer {
+  color: #aaaaaa;
+  margin-top: 10px;
+  font-style: italic;
 }
 
 .poll-by {
@@ -99,18 +101,106 @@ code {
   margin-bottom: 20px;
 }
 
+.nav {
+  background-color: #fa6400;
+}
 
+.nav-div {
+  display: flex;
+  justify-content: space-between;
+}
 
+.nav-right {
+  margin-right: 10px;
+}
 
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+  margin-top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
+.nav li:first-child {
+  padding-left: 0;
+  margin-left: 10px;
+}
 
+.nav li a {
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  padding: 5px;
+}
 
+ul {
+  padding-left: 0;
+}
 
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
 
+a {
+  text-decoration: none;
+  color: #252525;
+}
 
+.active-nav {
+  border-bottom: 5px solid #ece0e0;
+}
 
+.leaderboard {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
+.leaderboard-table {
+  border: 1px solid black;
+  width: 80%;
+  border-collapse: collapse;
+}
 
+.leaderboard-table td {
+  border: 1px solid black;
+  width: 20%;
+  padding: 20px;
+}
+
+.leaderboard-table thead {
+  background-color: #f0e7e7;
+  font-weight: 900;
+  color: #fa6400;
+}
+
+.leaderboard-table td:first-child {
+  width: 60%;
+}
+
+.leaderboard-user {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.leaderboard-username {
+  font-weight: 900;
+  font-size: 22px;
+}
+
+.leaderboard-userid {
+  color: rgb(66, 63, 63);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.leaderboard-user-details {
+  margin-left: 10px;
+}
 
 /* https://getcssscan.com/css-buttons-examples
   button css
@@ -120,20 +210,21 @@ code {
   background-clip: padding-box;
   background-color: #fa6400;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
   margin: 0;
   min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
   transition: all 250ms;
@@ -156,6 +247,6 @@ code {
 
 .question-show-button:active {
   background-color: #c85000;
-  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);
 }

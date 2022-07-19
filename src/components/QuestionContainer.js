@@ -1,7 +1,9 @@
 import { connect } from "react-redux";
 import Question from "./QuestionCard";
 
-const QuestionContainer = ({ title, questions }) => {
+const QuestionContainer = (props) => {
+  const { title, questions } = props;
+
   return (
     <div className="questions-container-div">
       <div className="center question-type-heading">

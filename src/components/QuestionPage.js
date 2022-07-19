@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { handleAnswerSelected } from "../actions/questions";
 import QuestionOption from "./QuestionOption";
 
 const withRouter = (Component) => {
@@ -13,8 +14,18 @@ const withRouter = (Component) => {
 };
 
 const QuestionPage = (props) => {
-  console.log(props);
-  const { question } = props;
+  const { question, dispatch, authedUser } = props;
+
+  console.log("question", question);
+  const handleClick = (e, option) => {
+    console.log(option);
+    dispatch(handleAnswerSelected(question, option));
+  };
+
+  const checkSeletctedOption = (option) => {
+    return question[option].votes.includes(authedUser);
+  };
+
   if (question === undefined) {
     return <p>This Question doesn't exist</p>;
   }
@@ -27,8 +38,18 @@ const QuestionPage = (props) => {
       </div>
       <div className="poll-by center">Would you Rather?</div>
       <div className="question-options">
-        <QuestionOption text={question.optionOne.text}></QuestionOption>
-        <QuestionOption text={question.optionTwo.text}></QuestionOption>
+        <QuestionOption
+          handleClick={handleClick}
+          option="One"
+          text={question.optionOne.text}
+          selected={checkSeletctedOption("optionOne")}
+        ></QuestionOption>
+        <QuestionOption
+          handleClick={handleClick}
+          option="Two"
+          text={question.optionTwo.text}
+          selected={checkSeletctedOption("optionTwo")}
+        ></QuestionOption>
       </div>
     </div>
   );
@@ -36,11 +57,10 @@ const QuestionPage = (props) => {
 
 const mapStateToProps = ({ authedUser, questions }, props) => {
   const { id } = props.params;
-  console.log("From map", questions);
-  console.log("From map", authedUser);
 
   return {
     question: questions[id],
+    authedUser,
   };
 };
 

@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { formatDate } from "../utils/api";
 
-const QuestionCard = ({ question }) => {
+const QuestionCard = (props) => {
+  const { question } = props;
+
+  const navigate = useNavigate();
+
   const handleShow = (id) => {
     console.log("Navigate to ", id);
+    navigate(`/question/${id}`);
   };
 
   return (

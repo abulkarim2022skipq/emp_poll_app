@@ -11,7 +11,7 @@ export function receiveQuestions(questions) {
   };
 }
 
-function addAnswerOption(questionid, option, authedUser) {
+export function addAnswerOption(questionid, option, authedUser) {
   return {
     type: ADD_ANSWER_OPTION,
     option,
@@ -20,26 +20,10 @@ function addAnswerOption(questionid, option, authedUser) {
   };
 }
 
-function removeAnswerOption(questionid, authedUser) {
+export function removeAnswerOption(questionid, authedUser) {
   return {
     type: REMOVE_ANSWER_OPTION,
     id: questionid,
     authedUser,
-  };
-}
-
-export function handleAnswerSelected(question, option) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState();
-    const ans = { authedUser, qid: question.id, answer: option };
-    _saveQuestionAnswer(ans)
-      .then(() => {
-        console.log("Updated");
-        dispatch(removeAnswerOption(question.id, authedUser));
-        dispatch(addAnswerOption(question.id, option, authedUser));
-      })
-      .catch((e) => {
-        console.log("Error", e);
-      });
   };
 }

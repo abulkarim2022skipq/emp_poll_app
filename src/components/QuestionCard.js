@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../utils/api";
+import { setPageLocation } from "../actions/nav";
+import { connect } from "react-redux";
 
 const QuestionCard = (props) => {
-  const { question } = props;
+  const { question, dispatch } = props;
 
   const navigate = useNavigate();
 
   const handleShow = (id) => {
-    console.log("Navigate to ", id);
+    dispatch(setPageLocation(""));
     navigate(`/question/${id}`);
   };
 
@@ -29,4 +31,4 @@ const QuestionCard = (props) => {
   );
 };
 
-export default QuestionCard;
+export default connect()(QuestionCard);

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import { handleAnswerSelected } from "../actions/questions";
+import { handleAnswerSelected } from "../actions/shared";
 import QuestionOption from "./QuestionOption";
 
 const withRouter = (Component) => {
@@ -18,7 +18,6 @@ const QuestionPage = (props) => {
 
   console.log("question", question);
   const handleClick = (e, option) => {
-    console.log(option);
     dispatch(handleAnswerSelected(question, option));
   };
 

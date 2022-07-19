@@ -1,13 +1,14 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { getInitialData } from "../utils/api";
-import { _saveQuestionAnswer } from "../utils/_DATA";
+import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA";
 import { setAuthedUser } from "./authedUser";
 import {
   addAnswerOption,
+  addQuestion,
   receiveQuestions,
   removeAnswerOption,
 } from "./questions";
-import { addAnswer, receiveUsers } from "./users";
+import { addAnswer, receiveUsers, addQuestionInUser } from "./users";
 
 const AUTHED_USER = "sarahedo";
 
@@ -29,7 +30,6 @@ export function handleAnswerSelected(question, option) {
     const ans = { authedUser, qid: question.id, answer: option };
     _saveQuestionAnswer(ans)
       .then(() => {
-        console.log("Updated");
         dispatch(removeAnswerOption(question.id, authedUser));
         dispatch(addAnswerOption(question.id, option, authedUser));
         dispatch(addAnswer(question.id, option, authedUser));
@@ -37,5 +37,20 @@ export function handleAnswerSelected(question, option) {
       .catch((e) => {
         console.log("Error", e);
       });
+  };
+}
+
+export function handleAddQuestion(optionOne, OptionTwo) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    _saveQuestion({
+      optionOneText: optionOne,
+      optionTwoText: OptionTwo,
+      author: authedUser,
+    }).then((question) => {
+      dispatch(addQuestion(question));
+      dispatch(addQuestionInUser(question.id, authedUser));
+    });
   };
 }

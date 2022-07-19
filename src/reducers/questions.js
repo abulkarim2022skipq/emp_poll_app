@@ -1,5 +1,6 @@
 import {
   ADD_ANSWER_OPTION,
+  ADD_QUESTION,
   RECEIVE_QUESTIONS,
   REMOVE_ANSWER_OPTION,
 } from "../actions/questions";
@@ -25,7 +26,6 @@ export function questions(state = {}, action) {
           },
         },
       };
-
     case REMOVE_ANSWER_OPTION:
       return {
         ...state,
@@ -49,7 +49,11 @@ export function questions(state = {}, action) {
           },
         },
       };
-
+    case ADD_QUESTION:
+      return {
+        ...state,
+        [action.question.id]: action.question,
+      };
     default:
       return state;
   }

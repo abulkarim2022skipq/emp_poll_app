@@ -21,8 +21,13 @@ const QuestionContainer = (props) => {
 };
 
 const mapStateToProps = ({ questions }, props) => {
+  // chronological sorting
+  const sortedQuestions = props.questions
+    .map((q) => questions[q])
+    .sort((a, b) => a.timestamp - b.timestamp);
+  console.log(sortedQuestions);
   return {
-    questions: props.questions.map((q) => questions[q]),
+    questions: sortedQuestions,
   };
 };
 

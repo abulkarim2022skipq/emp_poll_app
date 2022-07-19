@@ -1,8 +1,7 @@
-import { _saveQuestionAnswer } from "../utils/_DATA";
-
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_ANSWER_OPTION = "ADD_ANSWER_OPTION";
 export const REMOVE_ANSWER_OPTION = "REMOVE_ANSWER_OPTION";
+export const ADD_QUESTION = "ADD_QUESTION";
 
 export function receiveQuestions(questions) {
   return {
@@ -25,5 +24,12 @@ export function removeAnswerOption(questionid, authedUser) {
     type: REMOVE_ANSWER_OPTION,
     id: questionid,
     authedUser,
+  };
+}
+
+export function addQuestion(question) {
+  return {
+    type: ADD_QUESTION,
+    question,
   };
 }

@@ -202,6 +202,42 @@ a {
   margin-left: 10px;
 }
 
+.new-question {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.new-question h3 {
+  font-size: xx-large;
+  margin-bottom: 15px;
+}
+
+.create-poll-text {
+  color: #777777;
+}
+
+.new-question-options {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.new-question-options input {
+  margin-top: 10px;
+  width: 80%;
+  font-size: 20px;
+}
+
+.new-question-options label {
+  font-weight: 600;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
 /* https://getcssscan.com/css-buttons-examples
   button css
 */

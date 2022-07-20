@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setPageLocation } from "../actions/nav";
 import { handleAddQuestion } from "../actions/shared";
+import Header from "./Header";
 
 const NewQuestion = (props) => {
   // TODO: Disable button on no text
 
   const { dispatch } = props;
+
+  const navigate = useNavigate();
 
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
@@ -19,51 +23,56 @@ const NewQuestion = (props) => {
     e.preventDefault();
 
     dispatch(handleAddQuestion(optionOneText, optionTwoText));
+    navigate("/");
   };
 
   return (
-    <div className="new-question">
-      <div className="center">
-        <h3>Would You Rather</h3>
-        <div className="create-poll-text">Create your own poll</div>
-      </div>
-      <div className="new-question-options">
-        <label>First option:</label>
-        <br />
-        <input
-          type="text"
-          placeholder="Option One"
-          onChange={(e) => {
-            setOptionOneText(e.target.value);
-          }}
-        />
-      </div>
-      <div className="new-question-options">
-        <label>Second option:</label>
-        <br />
-        <input
-          type="text"
-          placeholder="Option Two"
-          onChange={(e) => {
-            setOptionTwoText(e.target.value);
-          }}
-        />
-      </div>
-      <div className="submit-button">
-        <div>
-          <button
-            className="question-show-button"
-            type="submit"
-            disabled={
-              optionOneText.length < 1 || optionTwoText.length < 1
-                ? true
-                : false
-            }
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+    <div>
+      <Header />
+      <div className="new-question">
+        <div className="center">
+          <h3>Would You Rather</h3>
+          <div className="create-poll-text">Create your own poll</div>
         </div>
+        <form onSubmit={handleSubmit}>
+          <div className="new-question-options">
+            <label>First option:</label>
+            <br />
+            <input
+              type="text"
+              placeholder="Option One"
+              onChange={(e) => {
+                setOptionOneText(e.target.value);
+              }}
+            />
+          </div>
+          <div className="new-question-options">
+            <label>Second option:</label>
+            <br />
+            <input
+              type="text"
+              placeholder="Option Two"
+              onChange={(e) => {
+                setOptionTwoText(e.target.value);
+              }}
+            />
+          </div>
+          <div className="submit-button">
+            <div>
+              <button
+                className="question-show-button"
+                type="submit"
+                disabled={
+                  optionOneText.length < 1 || optionTwoText.length < 1
+                    ? true
+                    : false
+                }
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -1,34 +1,42 @@
 import { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import Dashboard from "./Dashboard";
-import { handleInitialData } from "../actions/shared";
-import Header from "./Header";
-import { Route, Routes } from "react-router-dom";
-import QuestionPage from "./QuestionPage";
 import { LoadingBar } from "react-redux-loading-bar";
+import { handleInitialData } from "../actions/shared";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import NotFound from "./NotFound";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
+import QuestionPage from "./QuestionPage";
+import Login from "./Login";
 
 function App(props) {
   const { dispatch, loading } = props;
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // console.log("calling useEffect", props);.
     dispatch(handleInitialData());
+    if (loading === false) {
+      navigate("/login");
+    }
   }, []);
 
   return (
     <Fragment>
       <LoadingBar />
       <div className="container">
-        <Header />
         {loading === true ? null : (
-          <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/question/:id" element={<QuestionPage />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/new" element={<NewQuestion />} />
-          </Routes>
+          <div>
+            <Routes>
+              <Route path="/" exact element={<Dashboard />} />
+              <Route path="/question/:id" element={<QuestionPage />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/add" element={<NewQuestion />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </div>
         )}
       </div>
     </Fragment>

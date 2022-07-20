@@ -1,8 +1,16 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   const { nav, user } = props;
+
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    navigate("/login");
+  };
 
   return (
     <header>
@@ -24,7 +32,7 @@ const Header = (props) => {
                 </Link>
               </li>
               <li>
-                <Link to="/new" className={nav === "new" ? "active-nav" : ""}>
+                <Link to="/add" className={nav === "new" ? "active-nav" : ""}>
                   New Question
                 </Link>
               </li>
@@ -33,7 +41,12 @@ const Header = (props) => {
           <div className="nav-right">
             <ul>
               <li>
-                <Link to={"/"}>{"user.id"}</Link>
+                <Link to={"/"}>{user !== undefined ? user.id : ""}</Link>
+              </li>
+              <li>
+                <a onClick={handleLogout} to={"/login"}>
+                  Logout
+                </a>
               </li>
             </ul>
           </div>

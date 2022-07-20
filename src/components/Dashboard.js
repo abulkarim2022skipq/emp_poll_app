@@ -12,7 +12,7 @@ const Dashboard = (props) => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div data-testid="dashboard">
       <Header />
       <div>
         <QuestionContainer title="New Questions" questions={newQuestions} />

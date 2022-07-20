@@ -26,7 +26,7 @@ function App(props) {
               path="/"
               exact
               element={
-                <AuthedComponent isAuthed={authedUser}>
+                <AuthedComponent authedUser={authedUser}>
                   <Dashboard />
                 </AuthedComponent>
               }
@@ -36,7 +36,7 @@ function App(props) {
               path="/question/:id"
               exact
               element={
-                <AuthedComponent isAuthed={authedUser}>
+                <AuthedComponent authedUser={authedUser}>
                   <QuestionPage />
                 </AuthedComponent>
               }
@@ -45,7 +45,7 @@ function App(props) {
             <Route
               path="/leaderboard"
               element={
-                <AuthedComponent isAuthed={authedUser}>
+                <AuthedComponent authedUser={authedUser}>
                   <Leaderboard />
                 </AuthedComponent>
               }
@@ -54,7 +54,7 @@ function App(props) {
             <Route
               path="/add"
               element={
-                <AuthedComponent isAuthed={authedUser}>
+                <AuthedComponent authedUser={authedUser}>
                   <NewQuestion />
                 </AuthedComponent>
               }
@@ -63,7 +63,7 @@ function App(props) {
             <Route
               path="/notfound"
               element={
-                <AuthedComponent isAuthed={authedUser}>
+                <AuthedComponent authedUser={authedUser}>
                   <NotFound />
                 </AuthedComponent>
               }

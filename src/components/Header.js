@@ -43,7 +43,7 @@ const Header = (props) => {
               <li className="avatar-smaller">
                 <Link to={"/"}>
                   {user !== undefined ? (
-                    <img src={user.avatarURL} width={"50px"} />
+                    <img src={user.avatarURL} width={"50px"} alt="avatar" />
                   ) : (
                     ""
                   )}

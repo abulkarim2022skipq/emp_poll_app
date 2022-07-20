@@ -7,35 +7,70 @@ import NotFound from "./NotFound";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
 import QuestionPage from "./QuestionPage";
+import AuthedComponent from "./AuthedComponent";
 import Login from "./Login";
 
 function App(props) {
-  const { dispatch, loading } = props;
-
-  const navigate = useNavigate();
+  const { dispatch, authedUser } = props;
 
   useEffect(() => {
     dispatch(handleInitialData());
-    if (loading === false) {
-      navigate("/login");
-    }
   }, []);
 
   return (
     <Fragment>
       <div className="container">
-        {loading === true ? null : (
-          <div>
-            <Routes>
-              <Route path="/" exact element={<Dashboard />} />
-              <Route path="/question/:id" element={<QuestionPage />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/add" element={<NewQuestion />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/*" element={<NotFound />} />
-            </Routes>
-          </div>
-        )}
+        <div>
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <AuthedComponent isAuthed={authedUser}>
+                  <Dashboard />
+                </AuthedComponent>
+              }
+            />
+
+            <Route
+              path="/question/:id"
+              exact
+              element={
+                <AuthedComponent isAuthed={authedUser}>
+                  <QuestionPage />
+                </AuthedComponent>
+              }
+            />
+
+            <Route
+              path="/leaderboard"
+              element={
+                <AuthedComponent isAuthed={authedUser}>
+                  <Leaderboard />
+                </AuthedComponent>
+              }
+            />
+
+            <Route
+              path="/add"
+              element={
+                <AuthedComponent isAuthed={authedUser}>
+                  <NewQuestion />
+                </AuthedComponent>
+              }
+            />
+
+            <Route
+              path="/notfound"
+              element={
+                <AuthedComponent isAuthed={authedUser}>
+                  <NotFound />
+                </AuthedComponent>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
       </div>
     </Fragment>
   );
@@ -43,7 +78,7 @@ function App(props) {
 
 const mapStateToProps = ({ authedUser }) => {
   return {
-    loading: authedUser === null,
+    authedUser,
   };
 };
 

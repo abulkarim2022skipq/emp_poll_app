@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 
 const Login = (props) => {
   const { users, dispatch } = props;
 
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,8 +20,9 @@ const Login = (props) => {
     try {
       if (users[username] !== undefined) {
         if (users[username].password === password) {
+          console.log(state?.path);
           dispatch(setAuthedUser(username));
-          navigate("/");
+          navigate(state?.path || "/");
         }
       }
       setWrongPassword(true);

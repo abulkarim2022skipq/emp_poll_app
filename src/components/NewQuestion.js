@@ -6,9 +6,7 @@ import { handleAddQuestion } from "../actions/shared";
 import Header from "./Header";
 
 const NewQuestion = (props) => {
-  // TODO: Disable button on no text
-
-  const { dispatch } = props;
+  const { dispatch, user } = props;
 
   const navigate = useNavigate();
 
@@ -29,10 +27,13 @@ const NewQuestion = (props) => {
   return (
     <div>
       <Header />
-      <div className="new-question">
+      <div className="new-question" style={{ marginBottom: "100px" }}>
         <div className="center">
           <h3>Would You Rather</h3>
           <div className="create-poll-text">Create your own poll</div>
+          <div className="avatar">
+            <img src={user.avatarURL} alt="avatar" />
+          </div>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="new-question-options">
@@ -78,4 +79,10 @@ const NewQuestion = (props) => {
   );
 };
 
-export default connect()(NewQuestion);
+const mapStateToProps = ({ users, authedUser }) => {
+  return {
+    user: users[authedUser],
+  };
+};
+
+export default connect(mapStateToProps)(NewQuestion);

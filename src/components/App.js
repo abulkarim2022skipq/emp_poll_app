@@ -1,6 +1,5 @@
 import { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import { LoadingBar } from "react-redux-loading-bar";
 import { handleInitialData } from "../actions/shared";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
@@ -24,7 +23,6 @@ function App(props) {
 
   return (
     <Fragment>
-      <LoadingBar />
       <div className="container">
         {loading === true ? null : (
           <div>

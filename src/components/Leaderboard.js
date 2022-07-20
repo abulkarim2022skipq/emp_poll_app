@@ -36,7 +36,12 @@ const Leaderboard = (props) => {
                   <td>
                     <div className="leaderboard-user">
                       <div className="avatar-small">
-                        <img src={user.avatar} alt="avatar small" />
+                        <img
+                          src={user.avatarURL}
+                          alt="avatar"
+                          width="50px"
+                          height="50px"
+                        />
                       </div>
                       <div className="leaderboard-user-details">
                         <div className="leaderboard-username">{user.name}</div>
@@ -58,8 +63,8 @@ const Leaderboard = (props) => {
 
 const mapStateToProps = ({ users }) => {
   var usersToReturn = Object.keys(users).map((user) => {
-    const { answers, name, questions, id, avatar } = users[user];
-    return { answers, name, questions, id, avatar };
+    const { answers, name, questions, id, avatarURL } = users[user];
+    return { answers, name, questions, id, avatarURL };
   });
 
   usersToReturn = usersToReturn.sort((a, b) => {

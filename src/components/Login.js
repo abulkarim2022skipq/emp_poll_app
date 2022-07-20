@@ -17,12 +17,13 @@ const Login = (props) => {
     e.preventDefault();
 
     try {
-      if (users[username].password === password) {
-        dispatch(setAuthedUser(username));
-        navigate("/");
-      } else {
-        setWrongPassword(true);
+      if (users[username] !== undefined) {
+        if (users[username].password === password) {
+          dispatch(setAuthedUser(username));
+          navigate("/");
+        }
       }
+      setWrongPassword(true);
     } catch (error) {
       setWrongPassword(true);
       console.log(error);
@@ -53,6 +54,7 @@ const Login = (props) => {
         <div className="login-options">
           <label>Username:</label>
           <input
+            data-testid="username"
             type="text"
             placeholder="Username"
             value={username}
@@ -64,7 +66,8 @@ const Login = (props) => {
         <div className="login-options">
           <label>Password:</label>
           <input
-            type="text"
+            data-testid="password"
+            type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => {

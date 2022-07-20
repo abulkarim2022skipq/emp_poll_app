@@ -40,6 +40,15 @@ const Header = (props) => {
           </div>
           <div className="nav-right">
             <ul>
+              <li className="avatar-smaller">
+                <Link to={"/"}>
+                  {user !== undefined ? (
+                    <img src={user.avatarURL} width={"50px"} />
+                  ) : (
+                    ""
+                  )}
+                </Link>
+              </li>
               <li>
                 <Link to={"/"}>{user !== undefined ? user.id : ""}</Link>
               </li>

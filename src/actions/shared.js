@@ -1,4 +1,3 @@
-import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { getInitialData } from "../utils/api";
 import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA";
 import {
@@ -11,11 +10,9 @@ import { addAnswer, receiveUsers, addQuestionInUser } from "./users";
 
 export function handleInitialData() {
   return (dispatch) => {
-    dispatch(showLoading());
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveQuestions(questions));
       dispatch(receiveUsers(users));
-      dispatch(hideLoading());
     });
   };
 }

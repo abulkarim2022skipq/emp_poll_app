@@ -15,14 +15,14 @@ const withRouter = (Component) => {
 };
 
 const QuestionPage = (props) => {
-  const { question, dispatch, authedUser } = props;
+  const { question, dispatch, user } = props;
 
   const handleClick = (e, option) => {
     dispatch(handleAnswerSelected(question, option));
   };
 
   const checkSeletctedOption = (option) => {
-    return question[option].votes.includes(authedUser);
+    return question[option].votes.includes(user.id);
   };
 
   if (question === undefined) {
@@ -32,10 +32,10 @@ const QuestionPage = (props) => {
   return (
     <div>
       <Header />
-      <div>
+      <div style={{ marginBottom: "100px" }}>
         <div className="poll-by center">Poll by {question.author}</div>
         <div className="avatar-big center">
-          <img src={question.avatar} alt="avatar"></img>
+          <img src={user.avatarURL} alt="avatar"></img>
         </div>
         <div className="poll-by center">Would you Rather?</div>
         <div className="question-options">
@@ -48,7 +48,7 @@ const QuestionPage = (props) => {
             totalVotes={
               question.optionOne.votes.length + question.optionTwo.votes.length
             }
-            disableButton={question.optionOne.votes.includes(authedUser)}
+            disableButton={question.optionOne.votes.includes(user.id)}
           ></QuestionOption>
           <QuestionOption
             handleClick={handleClick}
@@ -59,7 +59,7 @@ const QuestionPage = (props) => {
             totalVotes={
               question.optionTwo.votes.length + question.optionOne.votes.length
             }
-            disableButton={question.optionTwo.votes.includes(authedUser)}
+            disableButton={question.optionTwo.votes.includes(user.id)}
           ></QuestionOption>
         </div>
       </div>
@@ -67,12 +67,12 @@ const QuestionPage = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, questions }, props) => {
+const mapStateToProps = ({ authedUser, questions, users }, props) => {
   const { id } = props.params;
 
   return {
     question: questions[id],
-    authedUser,
+    user: users[authedUser],
   };
 };
 

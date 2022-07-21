@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 export default ({ children, authedUser }) => {
-  const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    if (authedUser === "") {
-      navigate("/login", { replace: true, state: { path: location.pathname } });
-    }
-  }, []);
-
-  return children;
+  return authedUser === "" ? (
+    <Navigate
+      to="/login"
+      replace
+      state={{ path: location.pathname }}
+    ></Navigate>
+  ) : (
+    children
+  );
 };
